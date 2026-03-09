@@ -2,7 +2,7 @@
 <odoo>
     <template id="custom_arabic_english_invoice" inherit_id="l10n_gcc_invoice.arabic_english_invoice">
         <!-- Replace the company address block with custom Arabic/English details and logo after details -->
-        <xpath expr="//div[@name='company_address']/ul" position="replace">
+        <xpath expr="//div[@name='address']/ul" position="replace">
             <table style="width:100%; border:none;">
                 <tr>
                     <td rowspan="6" style="width:120px; vertical-align:top;">
