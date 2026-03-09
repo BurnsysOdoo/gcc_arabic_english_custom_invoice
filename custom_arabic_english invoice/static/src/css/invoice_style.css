@@ -1,0 +1,122 @@
+/* Arabic Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+.invoice-report-itax {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Arabic Text Styling */
+.arabic-text {
+    font-family: 'Cairo', 'Tahoma', 'Arial', sans-serif;
+    direction: rtl;
+    text-align: right;
+    font-size: 11pt;
+}
+
+/* Header Styling */
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #003da5;
+}
+
+.company-info-en,
+.company-info-ar {
+    flex: 1;
+}
+
+.company-info-ar {
+    text-align: right;
+}
+
+/* Title */
+.invoice-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.invoice-title h2 {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 18pt;
+    color: #003da5;
+}
+
+/* Details Table */
+.table-details {
+    width: 100%;
+    margin: 15px 0;
+    font-size: 10pt;
+}
+
+.table-details td {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Line Items Table */
+.table-lines {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.table-lines thead {
+    background-color: #003da5;
+    color: white;
+    font-weight: bold;
+}
+
+.table-lines th,
+.table-lines td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 10pt;
+}
+
+.table-lines tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Totals */
+.invoice-totals {
+    margin: 20px 0;
+    text-align: right;
+}
+
+.totals-table .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 11pt;
+}
+
+.totals-table .row.total {
+    font-weight: bold;
+    font-size: 12pt;
+    color: #003da5;
+    border-top: 2px solid #003da5;
+    padding: 10px 0;
+}
+
+/* Footer */
+.invoice-footer {
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    font-size: 9pt;
+    color: #666;
+}
+
+/* Page Break */
+@media print {
+    .invoice-report-itax {
+        page-break-after: always;
+    }
+}
