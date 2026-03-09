@@ -4,16 +4,7 @@
         <!-- Replace the company address block with custom Arabic/English details and logo after details -->
         <xpath expr="//div[@name='company_address']/ul" position="replace">
             <ul class="list-unstyled" name="company_address_list">
-                <li t-if="company.is_company_details_empty">
-                    <span t-field="company.partner_id"
-                        t-options="{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': true}">
-                        <div class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 w-100 opacity-75 text-muted text-center">
-                            <strong>Company address block</strong>
-                            <div>Contains the company address.</div>
-                        </div>
-                    </span>
-                </li>
-                <li t-else="">
+                <li>
                     <span t-field="company.company_details">
                         <div class="bg-light border-1 rounded h-100 d-flex flex-column align-items-left justify-content-left p-4 w-100 opacity-75 text-muted text-center">
                             <strong>Company details block</strong>
