@@ -19,12 +19,12 @@
         'sale',
     ],
     'data': [
-        'report/invoice_template.xml',
-        'report/invoice_report.xml',
+        'reports/invoice_report.xml',
+        'reports/invoice_template.xml',
     ],
     'assets': {
         'web.report_assets_common': [
-            'gcc_invoice_layout/static/src/css/invoice_report.css',
+            'custom_arabic_english_invoice/static/src/css/invoice_report.css',
         ],
     },
     'installable': True,

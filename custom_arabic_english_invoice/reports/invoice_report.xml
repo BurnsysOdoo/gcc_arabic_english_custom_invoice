@@ -5,8 +5,8 @@
         model="account.move"
         string="Tax Invoice (Custom GCC)"
         report_type="qweb-pdf"
-        name="custom_gcc_invoice.report_invoice_document_itax"
-        file="custom_gcc_invoice.report_invoice_document_itax"
+        name="custom_arabic_english_invoice.report_invoice_document_itax"
+        file="custom_arabic_english_invoice.report_invoice_document_itax"
         print_report_name="'Tax Invoice - %s' % object.name"
     />
 </odoo>
