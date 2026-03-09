@@ -1,51 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <template id="custom_striped_layout" inherit_id="web.external_layout_striped">
+    <template id="custom_arabic_english_invoice" inherit_id="l10n_gcc_invoice.arabic_english_invoice">
         <!-- Replace the company address block with custom Arabic/English details and logo after details -->
         <xpath expr="//div[@name='company_address']/ul" position="replace">
-            <ul class="list-unstyled" name="company_address_list">
-                <li>
-                     <div dir="ltr" name="company_address_english" class="w-30 align-items-left justify-content-left text-left">
-                        <ul class="list-unstyled">
-                            <li>
-                                <t>
-                                    <br/> <br/>
-                                    <t> Abdalla El Hemiedy Trading Company</t><br/> 
-                                    <t>VDammam, Saudi Arabia</t><br/>
-                                    <t>VAT Number: 3144900000000000</t><br/>
-                                    <t>CRN: 00000000000000ة</t>
-                                </t>
-                            </li>
-                        </ul>
-                    </div>
-                     <!-- Logo after details -->
-                    <div class="w-40 align-items-center justify-content-center text-center">
-                        <img t-if="company.logo" class="o_company_logo_big flex-column align-items-right justify-content-right" t-att-src="image_data_uri(company.logo)" alt="Logo"/>
-                        <div t-if="company.report_header" t-field="company.report_header" class="o_company_tagline fw-bold mt-2">Company tagline</div>
-                    </div>
-                    <!-- Arabic company details block -->
-                    <div dir="rtl" name="company_address_arabic" class="w-30 align-items-right justify-content-right text-right">
-                        <ul class="list-unstyled">
-                            <li>
-                                <t>
-                                    <br/> <br/>
-                                    <t> شركة إبداع الحمايدي للتجارة</t>,<br/>
-                                    <t>الدمام، المملكة العربية السعودية</t>,<br/>
-                                    <t> لرقم الضريبي: 31000000000000000</t>,<br/>
-                                    <t>000000000000000: رقم التعريف التجاري</t>
-                                </t>
-                            </li>
-                            <li t-if="not forced_vat">
-                                <t t-if="company.vat">
-                                    <t t-esc="'الرقم الضريبي'"></t>:
-                                    <span t-esc="company.vat">314490047300003</span>
-                                </t>
-                            </li>
-                        </ul>
-                    </div>
-                   
-                </li>
-            </ul>
+            <table style="width:100%; border:none;">
+                <tr>
+                    <td rowspan="6" style="width:120px; vertical-align:top;">
+                        <!-- Zakat QR Code -->
+                        <img t-if="o.partner_id.zakat_qr_code" t-att-src="o.partner_id.zakat_qr_code" alt="QR Code" style="width:110px; height:110px;"/>
+                    </td>
+                    <td><strong>Customer Name</strong></td>
+                    <td t-field="o.partner_id.name"/>
+                    <td style="text-align:right;"><strong>اسم العميل</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Customer Number</strong></td>
+                    <td t-field="o.partner_id.phone"/>
+                    <td style="text-align:right;"><strong>رقم جوال العميل</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Customer Address</strong></td>
+                    <td t-field="o.partner_id.contact_address"/>
+                    <td style="text-align:right;"><strong>عنوان العميل</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>VAT</strong></td>
+                    <td t-field="o.partner_id.vat"/>
+                    <td style="text-align:right;"><strong>الرقم الضريبي للعميل</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CRN</strong></td>
+                    <td t-field="o.partner_id.crn"/>
+                    <td style="text-align:right;"><strong>رقم التعريف التجاري</strong></td>
+                </tr>
+            </table>
         </xpath>
     </template>
 </odoo>
