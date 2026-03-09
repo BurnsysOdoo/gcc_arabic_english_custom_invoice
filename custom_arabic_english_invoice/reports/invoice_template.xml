@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="custom_arabic_english_invoice" inherit_id="l10n_gcc_invoice.arabic_english_invoice">
-        <!-- Replace the company address block with custom Arabic/English details and logo after details -->
-        <xpath expr="//div[@name='address']/ul" position="replace">
+        <xpath  expr="//t[@t-set='address']" position="replace">
             <table style="width:100%; border:none;">
+               
                 <tr>
-                    <td rowspan="6" style="width:120px; vertical-align:top;">
-                        <!-- Zakat QR Code -->
-                        <img t-if="o.partner_id.zakat_qr_code" t-att-src="o.partner_id.zakat_qr_code" alt="QR Code" style="width:110px; height:110px;"/>
-                    </td>
                     <td><strong>Customer Name</strong></td>
                     <td t-field="o.partner_id.name"/>
                     <td style="text-align:right;"><strong>اسم العميل</strong></td>
@@ -32,6 +28,29 @@
                     <td><strong>CRN</strong></td>
                     <td t-field="o.partner_id.crn"/>
                     <td style="text-align:right;"><strong>رقم التعريف التجاري</strong></td>
+                </tr>
+                 <tr>
+                    <td rowspan="8" style="width:120px; vertical-align:top;">
+                        <!-- Zakat QR Code or Legal QR -->
+                        <img t-if="o.partner_id.zakat_qr_code" t-att-src="o.partner_id.zakat_qr_code" alt="QR Code" style="width:110px; height:110px;"/>
+                        <img t-if="o._l10n_sa_is_legal() and o.l10n_sa_qr_code_str" class="d-block mt-2" t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', quote_plus(o.l10n_sa_qr_code_str), 200, 200)"/>
+                    </td>
+                    <td colspan="3" style="text-align:center;">
+                        <t t-if="o.company_id.country_id.code == 'SA' and o.is_sale_document() and not o._l10n_sa_is_legal()">
+                            <div class="fw-bold text-center mt-2">
+                                <h5>THIS IS NOT A LEGAL DOCUMENT</h5>
+                                <h5>هذا المستند ليس مستنداً قانونياً</h5>
+                            </div>
+                        </t>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div t-if="o.partner_shipping_id and (o.partner_shipping_id != o.partner_id)" groups="account.group_delivery_invoice_address" name="shipping_address_block">
+                            <strong class="d-block mt-3">Shipping Address:</strong>
+                            <div t-field="o.partner_shipping_id" t-options="{'widget': 'contact', 'fields': ['address', 'name'], 'no_marker': True}"/>
+                        </div>
+                    </td>
                 </tr>
             </table>
         </xpath>
