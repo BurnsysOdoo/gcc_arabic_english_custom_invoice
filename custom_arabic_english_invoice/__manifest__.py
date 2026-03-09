@@ -19,7 +19,6 @@
         'sale',
     ],
     'data': [
-        'reports/invoice_report.xml',
         'reports/invoice_template.xml',
     ],
     'assets': {
