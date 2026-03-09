@@ -5,7 +5,7 @@
         <xpath expr="//div[@name='company_address']/ul" position="replace">
             <ul class="list-unstyled" name="company_address_list">
                 <li>
-                     <div dir="ltr" name="company_address_arabic" class="w-30 align-items-right justify-content-right text-right">
+                     <div dir="ltr" name="company_address_english" class="w-30 align-items-left justify-content-left text-left">
                         <ul class="list-unstyled">
                             <li>
                                 <t>
