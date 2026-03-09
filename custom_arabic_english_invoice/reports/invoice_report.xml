@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <report
-        id="report_invoice_custom_itax"
+        id="account.report_invoice"
         model="account.move"
-        string="Tax Invoice (Custom GCC)"
+        string="Invoice"
         report_type="qweb-pdf"
-        name="custom_arabic_english_invoice.report_invoice_document_itax"
-        file="custom_arabic_english_invoice.report_invoice_document_itax"
-        print_report_name="'Tax Invoice - %s' % object.name"
+        name="account.report_invoice"
+        file="account.report_invoice"
+        attachment_use="True"
+        attachment="(object.state in ('open','in_payment','paid')) and ('INV'+(object.name or '').replace('/','')+'.pdf')"
+        print_report_name="'Invoice - %s' % (object.name)"
+        groups="account.group_account_invoice"
     />
 </odoo>
